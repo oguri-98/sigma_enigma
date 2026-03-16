@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sigma — 謎解き制作ポートフォリオ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f5f7;
+      --surface: #e8ecf0;
+      --white: #ffffff;
+      --border: rgba(74,111,138,0.14);
+      --blue-deep: #2d4d62;
+      --blue-mid: #4a6f8a;
+      --blue-lite: #7a9db8;
+      --blue-pale: #d4e2ec;
+      --text: #1e2d38;
+      --muted: #6b8394;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(243,245,247,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 0.8rem; }
+
+    .nav-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%; object-fit: cover;
+    }
+
+    .nav-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem; letter-spacing: 0.25em;
+      color: var(--blue-deep);
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--blue-deep); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg-letter {
+      position: absolute; right: -2%; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44vw;
+      color: rgba(74,111,138,0.04);
+      pointer-events: none; line-height: 1; user-select: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--blue-mid); text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--blue-deep);
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+    .hero-title em { font-style: italic; color: var(--blue-mid); }
+
+    .hero-divider {
+      width: 48px; height: 2px; background: var(--blue-mid);
+      margin: 2rem 0;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+
+    .hero-sub {
+      font-size: 0.875rem; color: var(--muted);
+      max-width: 400px; letter-spacing: 0.04em;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    /* ── PROFILE CARD ── */
+    .profile-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative; z-index: 1;
+      box-shadow: 0 4px 40px rgba(45,77,98,0.08);
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .profile-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--blue-mid), var(--blue-lite));
+    }
+
+    .profile-top {
+      display: flex; align-items: center; gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .profile-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--blue-pale);
+    }
+
+    .profile-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.2em;
+      color: var(--blue-lite); text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .profile-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400;
+      color: var(--blue-deep);
+    }
+
+    .profile-bio {
+      font-size: 0.82rem; color: var(--muted); line-height: 2;
+    }
+
+    .profile-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .profile-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.1em;
+      color: var(--blue-mid); background: var(--blue-pale);
+      padding: 0.3rem 0.8rem; border-radius: 2px;
+    }
+
+    /* ── SECTION ── */
+    #works { background: var(--surface); }
+
+    .section-wrap { padding: 7rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem; color: var(--blue-lite); letter-spacing: 0.2em;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 300; color: var(--blue-deep);
+    }
+
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── WORKS ── */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      display: block; background: var(--white);
+      border: 1px solid var(--border);
+      text-decoration: none; color: inherit; overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 2px 16px rgba(45,77,98,0.06);
+    }
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(45,77,98,0.14);
+    }
+
+    .work-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+
+    .work-thumb-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--blue-pale) 0%, #b8d0e4 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .work-thumb-placeholder span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; color: var(--blue-lite); opacity: 0.6;
+    }
+
+    .work-body { padding: 1.8rem 2rem 2rem; }
+
+    .work-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.2em;
+      color: var(--blue-mid); text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .work-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 400;
+      color: var(--blue-deep); margin-bottom: 0.6rem; line-height: 1.3;
+    }
+
+    .work-desc {
+      font-size: 0.78rem; color: var(--muted);
+      line-height: 1.85; margin-bottom: 1.5rem;
+    }
+
+    .work-footer {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    .work-role {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.08em;
+      color: var(--blue-mid); border: 1px solid var(--border);
+      padding: 0.25rem 0.7rem;
+    }
+
+    .work-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; color: var(--blue-lite); margin-left: auto;
+    }
+
+    .work-arrow { font-size: 0.75rem; color: var(--blue-mid); transition: transform 0.3s; }
+    .work-card:hover .work-arrow { transform: translateX(4px); }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+
+    .contact-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300;
+      color: var(--blue-deep); margin-bottom: 1.2rem; line-height: 1.4;
+    }
+
+    .contact-text p { font-size: 0.82rem; color: var(--muted); line-height: 2; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--white); border: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      box-shadow: 0 2px 10px rgba(45,77,98,0.05);
+    }
+    .contact-link:hover {
+      border-color: var(--blue-mid);
+      background: var(--blue-pale);
+      transform: translateX(4px);
+    }
+
+    .contact-link-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--blue-lite);
+    }
+    .contact-link-value { font-size: 0.82rem; color: var(--blue-deep); }
+    .contact-link-arrow { margin-left: auto; color: var(--blue-mid); font-size: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--white);
+    }
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 7rem; gap: 3rem; }
+      .hero-bg-letter { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section-wrap { padding: 5rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <!-- アイコン: index.html と同じフォルダに sigma_riddle_icon_circle.png を置いてください -->
+    <img src="sigma_riddle_icon_circle.png" alt="sigma icon" class="nav-icon">
+    <span class="nav-name">sigma</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-bg-letter" aria-hidden="true">S</span>
+
+  <div class="hero-left">
+    <p class="hero-eyebrow">Mystery &amp; Puzzle Designer</p>
+    <h1 class="hero-title">謎を<em>設計</em>し、<br>体験を<em>紡ぐ</em>。</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      <!-- ↓ キャッチコピーを自由に書き換えてください -->
+      謎解きコンテンツを制作するクリエイター・sigma のポートフォリオです。
+    </p>
+  </div>
+
+  <!-- PROFILE CARD -->
+  <div class="profile-card">
+    <div class="profile-top">
+      <img src="sigma_riddle_icon_circle.png" alt="sigma" class="profile-avatar">
+      <div>
+        <p class="profile-label">Creator</p>
+        <p class="profile-name">sigma</p>
+      </div>
+    </div>
+    <!-- ↓ プロフィール文をここに書いてください -->
+    <p class="profile-bio">
+      謎解きの企画・制作を行っているsigmaです。<br>
+      リアル謎解きゲームやオンライン謎解きの制作を中心に活動しています。<br>
+      「解けた瞬間の喜び」を大切に、ロジックと物語の両立を目指しています。
+    </p>
+    <!-- ↓ タグを自由に追加・削除してください -->
+    <div class="profile-tags">
+      <span class="profile-tag">謎制作</span>
+      <span class="profile-tag">シナリオ</span>
+      <span class="profile-tag">ディレクション</span>
+      <span class="profile-tag">デザイン</span>
+    </div>
+  </div>
+</div>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Works</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="works-grid">
+
+      <!--
+        ════ 作品カードの書き方 ════
+        · href="..."  → 詳細ページのURLに変更してください
+        · 画像あり  : work-thumb-placeholder を削除して
+                      <img src="work1.jpg" alt="作品名" class="work-thumb"> を使う
+        · 画像なし  : work-thumb-placeholder をそのまま使う
+        · カード全体をコピーして作品を追加できます
+      -->
+
+      <!-- 作品 1 -->
+      <a href="https://example.com/work1" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
+        <!-- 画像あり版: <img src="work1.jpg" alt="作品タイトル" class="work-thumb"> -->
+        <div class="work-thumb-placeholder"><span>Σ</span></div>
+        <div class="work-body">
+          <p class="work-tag">リアル謎解きゲーム</p>
+          <h3 class="work-title">作品タイトルをここに入力</h3>
+          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <div class="work-footer">
+            <span class="work-role">謎制作</span>
+            <span class="work-role">シナリオ</span>
+            <span class="work-year">2024</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 作品 2 -->
+      <a href="https://example.com/work2" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
+        <div class="work-thumb-placeholder"><span>Σ</span></div>
+        <div class="work-body">
+          <p class="work-tag">周遊型謎解き</p>
+          <h3 class="work-title">作品タイトルをここに入力</h3>
+          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <div class="work-footer">
+            <span class="work-role">ディレクション</span>
+            <span class="work-role">謎制作</span>
+            <span class="work-year">2024</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 作品 3 -->
+      <a href="https://example.com/work3" target="_blank" rel="noopener" class="work-card reveal reveal-delay-3">
+        <div class="work-thumb-placeholder"><span>Σ</span></div>
+        <div class="work-body">
+          <p class="work-tag">オンライン謎解き</p>
+          <h3 class="work-title">作品タイトルをここに入力</h3>
+          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <div class="work-footer">
+            <span class="work-role">謎制作</span>
+            <span class="work-role">デザイン</span>
+            <span class="work-year">2023</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 作品 4 -->
+      <a href="https://example.com/work4" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <div class="work-thumb-placeholder"><span>Σ</span></div>
+        <div class="work-body">
+          <p class="work-tag">公演型謎解き</p>
+          <h3 class="work-title">作品タイトルをここに入力</h3>
+          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <div class="work-footer">
+            <span class="work-role">シナリオ</span>
+            <span class="work-year">2023</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="contact-wrap reveal">
+      <div class="contact-text">
+        <h3>お仕事・コラボの<br>ご依頼はこちらへ</h3>
+        <!-- ↓ 説明文を書き換えてください -->
+        <p>謎解きコンテンツの制作依頼、共同制作のご相談など、<br>お気軽にご連絡ください。</p>
+      </div>
+
+      <div class="contact-links">
+        <!-- ↓ 連絡先を書き換えてください -->
+        <a href="mailto:your@email.com" class="contact-link">
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">your@email.com</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a href="https://twitter.com/yourid" target="_blank" rel="noopener" class="contact-link">
+          <div>
+            <div class="contact-link-label">X (Twitter)</div>
+            <div class="contact-link-value">@yourid</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/yourid" target="_blank" rel="noopener" class="contact-link">
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-value">github.com/yourid</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&#169; 2025 sigma &#8212; Mystery &amp; Puzzle Designer</p>
+  <p>Built for GitHub Pages</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
