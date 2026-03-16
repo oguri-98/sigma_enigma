@@ -50,8 +50,8 @@
     }
 
     .nav-name {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem; letter-spacing: 0.25em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; letter-spacing: 0em;
       color: var(--blue-deep);
     }
 
@@ -75,10 +75,10 @@
     }
 
     .hero-bg-letter {
-      position: absolute; right: -2%; top: 50%;
+      position: absolute; right: 0%; top: 23%;
       transform: translateY(-50%);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 44vw;
+      font-size: 27vw;
       color: rgba(74,111,138,0.04);
       pointer-events: none; line-height: 1; user-select: none;
     }
@@ -224,7 +224,7 @@
       font-size: 3.5rem; color: var(--blue-lite); opacity: 0.6;
     }
 
-    .work-body { padding: 1.8rem 2rem 2rem; }
+    .work-body { padding: 1.8rem 2rem 2rem; /*position: relative; */}
 
     .work-tag {
       font-family: 'Space Mono', monospace;
@@ -246,6 +246,7 @@
 
     .work-footer {
       display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+      /*position: relative;*/
     }
 
     .work-role {
@@ -262,6 +263,18 @@
 
     .work-arrow { font-size: 0.75rem; color: var(--blue-mid); transition: transform 0.3s; }
     .work-card:hover .work-arrow { transform: translateX(4px); }
+
+    .work-source {
+      font-size: 0.65em;
+      color: #9bb0c2;
+      position: absolute;
+      left: 1.2rem;
+      bottom: 0.2rem;
+      background: rgba(255,255,255,0.85);
+      padding: 0 0.4em;
+      border-radius: 2px;
+      pointer-events: none;
+    }
 
     /* ── CONTACT ── */
     .contact-wrap {
@@ -308,8 +321,8 @@
       background: var(--white);
     }
     footer p {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.0rem; color: var(--muted); letter-spacing: 0.0em;
     }
 
     /* ── ANIMATIONS ── */
@@ -355,7 +368,7 @@
 
 <!-- HERO -->
 <div class="hero">
-  <span class="hero-bg-letter" aria-hidden="true">S</span>
+  <span class="hero-bg-letter" aria-hidden="true">sigma</span>
 
 
   <!-- PROFILE CARD -->
@@ -363,15 +376,15 @@
     <div class="profile-top">
       <img src="sigma_riddle_icon_circle.png" alt="sigma" class="profile-avatar">
       <div>
-        <p class="profile-label">Creator</p>
+        <!-- <p class="profile-label">Creator</p> -->
         <p class="profile-name">sigma</p>
       </div>
     </div>
     <!-- ↓ プロフィール文をここに書いてください -->
     <p class="profile-bio">
-      sigmaです。<br>
+      シグマです。<br>
       謎解きがすきです。<br>
-      おもしろいもの、心動く体験、印象的な光景がすきです。
+      おもしろいもの、心動く体験、目に焼きつく光景がすきです。
     </p>
   </div>
 </div>
@@ -408,8 +421,9 @@
             <span class="work-role">映像・演出</span>
             <span class="work-year">2026</span>
             <span class="work-arrow">→</span>
-            <span class="work-source" style="font-size:0.65em;color:#9bb0c2;">出典：AnotherVision</span>
           </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：AnotherVision</span>
         </div>
       </a>
 
@@ -443,56 +457,150 @@
             <span class="work-role">映像・演出</span>
             <span class="work-year">2025</span>
             <span class="work-arrow">→</span>
-            <span class="work-source" style="font-size:0.65em;color:#9bb0c2;">出典：AnotherVision</span>
           </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：AnotherVision</span>
         </div>
       </a>
 
-      <a href="https://anothervision.tokyo/contents/details/machina" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
-        <img src="moonitor_horizontal_MV_ver2.png" alt="moonitor" class="work-thumb"> 
+      <a href="https://higanjima-escape.info" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
+        <img src="https://higanjima-escape.info/img/ogp.png" alt="moonitor" class="work-thumb"> 
         <div class="work-body">
-          <p class="work-tag">周遊型謎解き</p>
-          <h3 class="work-title">作品タイトルをここに入力</h3>
-          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <p class="work-tag">ホール型謎解き</p>
+          <h3 class="work-title">吸血鬼が巣食う坑道からの脱出</h3>
+          <p class="work-desc">彼岸島×なぞときものがたり<br>圧倒的絶望を、「人」として生き延びろ。</p>
           <div class="work-footer">
-            <span class="work-role">ディレクション</span>
-            <span class="work-role">謎制作</span>
-            <span class="work-year">2024</span>
+            <span class="work-role">タイトルロゴ</span>
+            <span class="work-year">2025</span>
             <span class="work-arrow">→</span>
           </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
         </div>
       </a>
 
-      <!-- 作品 3 -->
-      <a href="https://example.com/work3" target="_blank" rel="noopener" class="work-card reveal reveal-delay-3">
-        <div class="work-thumb-placeholder"><span>Σ</span></div>
+
+      <a href="https://escape.id/karakara-org/e-trump" target="_blank" rel="noopener" class="work-card reveal reveal-delay-3">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/xNWYB8gDOl/s-2480x3508_v-frms_webp_c0668891-7354-448c-b19b-8fd78a4974a7_middle.webp" alt="Escape from Trumpark" class="work-thumb"> 
         <div class="work-body">
-          <p class="work-tag">オンライン謎解き</p>
-          <h3 class="work-title">作品タイトルをここに入力</h3>
-          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <p class="work-tag">ホール型謎解き</p>
+          <h3 class="work-title">Escape from Trumpark</h3>
+          <p class="work-desc">命を賭けて、 全てのアトラクションを攻略せよ。</p>
           <div class="work-footer">
-            <span class="work-role">謎制作</span>
+            <span class="work-role">タイトルロゴ</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+          </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
+        </div>
+      </a>
+
+
+      <a href="https://karakarakuukuu.booth.pm/items/7126069" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/7126069/06b2410f-92f1-4301-b474-1ab237a80dfe.png" alt="漆黒" class="work-thumb"> 
+        
+        <div class="work-body">
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">♰漆黒♰</h3>
+          <p class="work-desc">家で気軽に謎解きを楽しむための新たなレーベル「空空ショートショート」第５弾！<br>だいぶ振り切った作品となりました！？</p>
+          <div class="work-footer">
             <span class="work-role">デザイン</span>
-            <span class="work-year">2023</span>
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
             <span class="work-arrow">→</span>
           </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
         </div>
       </a>
 
-      <!-- 作品 4 -->
-      <a href="https://example.com/work4" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
-        <div class="work-thumb-placeholder"><span>Σ</span></div>
+
+      <a href="https://karakarakuukuu.booth.pm/items/6924496" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/6924496/083653c8-f0f5-4b52-92fb-5814d4e76a01_base_resized.jpg" alt="謎解和歌集" class="work-thumb"> 
+        
         <div class="work-body">
-          <p class="work-tag">公演型謎解き</p>
-          <h3 class="work-title">作品タイトルをここに入力</h3>
-          <p class="work-desc">作品の概要・あらすじを記載します。どんな謎解きか、開催場所、参加人数など。</p>
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">謎解和歌集</h3>
+          <p class="work-desc">家で気軽に謎解きを楽しむための新たなレーベル「空空ショートショート」第四弾！<br>今回も短いながらもしっかり楽しめる謎解きをお届けします</p>
           <div class="work-footer">
-            <span class="work-role">シナリオ</span>
-            <span class="work-year">2023</span>
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
             <span class="work-arrow">→</span>
           </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
         </div>
       </a>
+
+      <a href="https://karakarakuukuu.booth.pm/items/6833293" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/6833293/2f162e0b-a7fa-4c0c-9a5e-9f7041d17b97_base_resized.jpg" alt="相思い" class="work-thumb"> 
+        
+        <div class="work-body">
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">相思い</h3>
+          <p class="work-desc">家で気軽に謎解きを楽しむための新たなレーベル「空空ショートショート」３作目の作品！<br>青春を感じられるすばらしい作品になっています！</p>
+          <div class="work-footer">
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+          </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
+        </div>
+      </a>
+
+      <a href="https://karakarakuukuu.booth.pm/items/6791526" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/6791526/e4d3c37a-1f1f-4e4c-8eef-5ad3353f5535_base_resized.jpg" alt="Bloom" class="work-thumb"> 
+        
+        <div class="work-body">
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">Bloom</h3>
+          <p class="work-desc">「空空ショートショート」第二弾！<br>こちらも青春を感じられる作品になっています！</p>
+          <div class="work-footer">
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+          </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
+        </div>
+      </a>
+
+      <a href="https://karakarakuukuu.booth.pm/items/6706641" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/6706641/3ba3c420-742d-4456-981f-0451d44c85d6_base_resized.jpg" alt="アイリィ" class="work-thumb"> 
+        
+        <div class="work-body">
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">アイリィ</h3>
+          <p class="work-desc">家で気軽に謎解きを楽しむための新たなレーベル「空空ショートショート」を作りました。記念すべき一作目の作品になります。青春を感じられるすばらしい作品になっています！</p>
+          <div class="work-footer">
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+          </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
+        </div>
+      </a>
+
+      <a href="https://karakarakuukuu.booth.pm/items/6585242" target="_blank" rel="noopener" class="work-card reveal reveal-delay-4">
+        <img src="https://booth.pximg.net/ca2e9cda-4742-47b4-a12a-54e409b5e8d6/i/6585242/b98e4845-82cd-4564-897a-b5b44cc95d4c_base_resized.jpg" alt="夏の思い出" class="work-thumb"> 
+        
+        <div class="work-body">
+          <p class="work-tag">持ち帰り謎</p>
+          <h3 class="work-title">夏の思い出</h3>
+          <p class="work-desc">所要時間：３０分～１時間<br>必要なもの：LINEを使用できる端末・シャープペンシルや黒鉛筆などの筆記用具<br>制作：モヌシー</p>
+          <div class="work-footer">
+            <span class="work-role">システム</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+          </div>
+          <br>
+          <span class="work-source" style="font-size:0.65em;color:#9bb0c2;position:absolute;left:2rem;bottom:1.2rem;">出典：空空-karakara-</span>
+        </div>
+      </a>
+
 
     </div>
   </div>
@@ -548,8 +656,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>&#169; 2025 sigma &#8212; Mystery &amp; Puzzle Designer</p>
-  <p>Built for GitHub Pages</p>
+  <p>&#169; sigma</p>
 </footer>
 
 <script>
