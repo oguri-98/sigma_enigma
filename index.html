@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sigma — 謎解き制作ポートフォリオ</title>
+  <title>sigma — 制作ポートフォリオ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
   <style>
@@ -344,7 +344,6 @@
 <!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <!-- アイコン: index.html と同じフォルダに sigma_riddle_icon_circle.png を置いてください -->
     <img src="sigma_riddle_icon_circle.png" alt="sigma icon" class="nav-icon">
     <span class="nav-name">sigma</span>
   </div>
@@ -390,16 +389,32 @@
 
       <!--
         ════ 作品カードの書き方 ════
-        · href="..."  → 詳細ページのURLに変更してください
-        · 画像あり  : work-thumb-placeholder を削除して
+        · href="..."  → 詳細ページのURLに変更
+        · 画像あり  : work-thumb-placeholder を削除
                       <img src="work1.jpg" alt="作品名" class="work-thumb"> を使う
         · 画像なし  : work-thumb-placeholder をそのまま使う
-        · カード全体をコピーして作品を追加できます
+        · カード全体をコピーして作品を追加
       -->
 
-      <!-- 作品 1 -->
+ 
+      <a href="https://anothervision.tokyo/contents/details/reduction" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
+        <img src="https://anothervision.tokyo/contents/images/contents_thumb/reduction_mini.png" alt="Reduction" class="work-thumb"> 
+        <div class="work-body">
+          <p class="work-tag">ホール型公演</p>
+          <h3 class="work-title">Reduction</h3>
+          <p class="work-desc">人類は増えすぎた。『人類削減計画＜Reduction＞を行います。生き残れるのは、このゲームに勝利したものだけです』</p>
+          <div class="work-footer">
+            <span class="work-role">メインビジュアル</span>
+            <span class="work-role">映像・演出</span>
+            <span class="work-year">2026</span>
+            <span class="work-arrow">→</span>
+            <span class="work-source" style="font-size:0.65em;color:#9bb0c2;">出典：AnotherVision</span>
+          </div>
+        </div>
+      </a>
+
       <a href="https://escape.id/nazocam2026-org/e-tsukinowa/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
-        <img src="moonitor_horizontal_MV_ver2.png" alt="作品タイトル" class="work-thumb"> 
+        <img src="moonitor_horizontal_MV_ver2.png" alt="moonitor" class="work-thumb">
         <div class="work-body">
           <p class="work-tag">ルーム型公演</p>
           <h3 class="work-title">moonitor</h3>
@@ -414,11 +429,27 @@
             <span class="work-arrow">→</span>
           </div>
         </div>
+
+      <a href="https://anothervision.tokyo/contents/details/machina" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
+        <img src="https://anothervision.tokyo/contents/images/contents_thumb/machina_mini.png" alt="machina" class="work-thumb"> 
+        <div class="work-body">
+          <p class="work-tag">ホール型公演</p>
+          <h3 class="work-title">マグナマキナの審判</h3>
+          <p class="work-desc">ようこそ、マグナマキナへ＿＿</p>
+          <div class="work-footer">
+            <span class="work-role">構成</span>
+            <span class="work-role">デザイン</span>
+            <span class="work-role">システム</span>
+            <span class="work-role">映像・演出</span>
+            <span class="work-year">2025</span>
+            <span class="work-arrow">→</span>
+            <span class="work-source" style="font-size:0.65em;color:#9bb0c2;">出典：AnotherVision</span>
+          </div>
+        </div>
       </a>
 
-      <!-- 作品 2 -->
-      <a href="https://example.com/work2" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
-        <div class="work-thumb-placeholder"><span>Σ</span></div>
+      <a href="https://anothervision.tokyo/contents/details/machina" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
+        <img src="moonitor_horizontal_MV_ver2.png" alt="moonitor" class="work-thumb"> 
         <div class="work-body">
           <p class="work-tag">周遊型謎解き</p>
           <h3 class="work-title">作品タイトルをここに入力</h3>
